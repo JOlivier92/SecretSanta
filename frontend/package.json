@@ -4,7 +4,6 @@
   "private": true,
   "dependencies": {
     "node-sass": "^4.10.0",
-    "nodemon": "^1.18.6",
     "react": "^16.6.3",
     "react-dom": "^16.6.3",
     "react-scripts": "2.1.1"
@@ -29,5 +28,8 @@
     "not dead",
     "not ie <= 11",
     "not op_mini all"
-  ]
+  ],
+  "devDependencies": {
+    "nodemon": "^1.18.6"
+  }
 }

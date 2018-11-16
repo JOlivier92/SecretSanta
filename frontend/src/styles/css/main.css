@@ -24,6 +24,9 @@
   to {
     transform: rotate(360deg); } }
 
+.homepage {
+  background: green; }
+
 body {
   margin: 0;
   padding: 0;

@@ -5,7 +5,7 @@ import Homepage from './homepage';
 class App extends React.Component {
   render() {
     return (
-      <div>
+      <div id="App">
         <Switch>
           <Route path="/" component={ Homepage } />
         </Switch>

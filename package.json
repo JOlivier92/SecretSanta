@@ -2,11 +2,15 @@
   "name": "SecretSanta",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "server": "nodemon --inspect app.js",
+    "frontend-install": "npm install --prefix frontend",
+    "frontend": "npm start --prefix frontend",
+    "dev": "concurrently \"npm run server\" \"npm run frontend\"",
     "start": "node app.js",
-    "server": "nodemon app.js"
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=true npm install --prefix frontend && npm run build --prefix frontend"
   },
   "keywords": [],
   "author": "",

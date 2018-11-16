@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './App';
+import Root from './components/root';
 import * as serviceWorker from './serviceWorker';
 import './styles/css/main.css';
 import configureStore from './store/store';
@@ -8,7 +8,7 @@ import configureStore from './store/store';
 document.addEventListener('DOMContentLoaded', () => {
     let store = configureStore();
     const root = document.getElementById('root');
-    ReactDOM.render(<App store={store} />, root);
+    ReactDOM.render(<Root store={store} />, root);
 });
 // ReactDOM.render(<App />, document.getElementById('root'));
 

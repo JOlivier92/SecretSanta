@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 const Schema = mongoose.Schema;
 
-const UserSchema = new Schema({
+const AdminSchema = new Schema({
     // admin email address
     email: {
         type: String,
@@ -15,7 +15,7 @@ const UserSchema = new Schema({
         required: true
     },
 
-    // room in which user is the owner (can make separate rooms 
+    // room in which Admin is the owner (can make separate rooms 
     // if admin to separate games)
     room_ids: {
         type: Array,
@@ -23,4 +23,4 @@ const UserSchema = new Schema({
     }
 })
 
-module.exports = User = mongoose.model('users', UserSchema);
+module.exports = Admin = mongoose.model('admins', AdminSchema);

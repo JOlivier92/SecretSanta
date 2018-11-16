@@ -4,7 +4,7 @@ const app = express();
 const dbURI = require("./config/keys");
 const mongoose = require("mongoose");
 const passport = require("passport");
-require("./models/User")
+require("./models/Admin")
 app.use(passport.initialize());
 
 require("./config/passport")(passport);

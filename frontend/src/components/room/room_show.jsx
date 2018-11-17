@@ -6,13 +6,13 @@ class RoomShow extends React.Component {
             participants: ''
         }
     }
-    
+
     
     render(){
         debugger
         return(
           <div>
-            
+              NOPE
           </div>
         )
       }

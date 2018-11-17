@@ -8,8 +8,9 @@ export const addNewRoom = payload => {
     }
 }
 
+
 export const createNewRoom = requirements => dispatch => {
     axios
         .post("/api/room", requirements)
-        .then(res => dispatch(addNewChat(res)));
+        .then(res => dispatch(addNewRoom(res)));
 }

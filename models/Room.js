@@ -8,16 +8,16 @@ const RoomSchema = new Schema({
         required: true
     },
 
-    // minimum to maximum value of gift
-    minMax: {
+    // minimum value of gift
+    priceRange: {
         type: String,
         required: false
     },
 
     // list of everyone inside of the room
-    userList: {
+    participants: {
         type: Array,
-        "default": []
+        default: []
     }
 });
 

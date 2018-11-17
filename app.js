@@ -1,10 +1,8 @@
 const path = require("path");
 const express = require("express");
 const app = express();
-const dbURI = require("./config/keys");
 const mongoose = require("mongoose");
 const passport = require("passport");
-
 require("./models/Admin")
 app.use(passport.initialize());
 
@@ -31,7 +29,6 @@ const port = process.env.PORT || 5000;
 
 // Routes
 const admins = require("./routes/api/admins");
-const participants = require("./routes/api/participants");
 const rooms = require("./routes/api/rooms");
 
 // Authentication modules
@@ -42,6 +39,7 @@ app.use(
 );
 app.use("/api/admins/register", admins.register);
 app.use("/api/admins/login", admins.login);
+app.use("/api/rooms", rooms);
 
 app.listen(port, () => console.log(`Server is running on port ${port}`));
 

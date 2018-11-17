@@ -1,3 +1,5 @@
+import axios from "axios";
+
 export const ADD_NEW_PARTICIPANT = "ADD_NEW_PARTICIPANT";
 export const GET_ERRORS = "GET_ERRORS";
 

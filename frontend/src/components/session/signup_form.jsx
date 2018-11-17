@@ -57,6 +57,18 @@ class LoginForm extends React.Component {
             <br />
             <br />
             <label>
+                Name:
+                <br />
+                <input
+                    type="text"
+                    value={this.state.name}
+                    onChange={this.update("name")}
+                    className="signup-input"
+                />
+                </label>
+                <br />
+                <br />
+            <label>
               Password:
               <br />
               <input
@@ -84,4 +96,4 @@ class LoginForm extends React.Component {
   }
 }
 
-export default withRouter(SignupForm);
+export default withRouter(LoginForm);

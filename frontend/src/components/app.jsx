@@ -7,6 +7,7 @@ class App extends React.Component {
     return (
       <div>
         <Switch>
+          <Route path="/SecretRoom" component={RoomFormComponent}/>
           <Route path="/" component={ Homepage } />
         </Switch>
       </div>

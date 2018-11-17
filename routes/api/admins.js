@@ -17,7 +17,7 @@ exports.current = function(req,res) {
 
 exports.register = function(req,res){
 
-    Admin.findOne({username: req.body.username}).then(admin => {
+    Admin.findOne({email: req.body.email}).then(admin => {
         // if the admin already exists in the database, return 400 level error
         if (admin) {
             errors.name = 'admin already exists';

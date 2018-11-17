@@ -15,12 +15,12 @@ const AdminSchema = new Schema({
         required: true
     },
 
-    // room in which Admin is the owner (can make separate rooms 
+    // room in which Admin is the owner (can make separate rooms
     // if admin to separate games)
     room_ids: {
         type: Array,
         "default": []
     }
-})
+});
 
 module.exports = Admin = mongoose.model('admins', AdminSchema);

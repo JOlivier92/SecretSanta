@@ -4,6 +4,7 @@ const app = express();
 const dbURI = require("./config/keys");
 const mongoose = require("mongoose");
 const passport = require("passport");
+
 require("./models/Admin")
 app.use(passport.initialize());
 
@@ -27,5 +28,27 @@ mongoose
 const port = process.env.PORT || 5000;
 // End Imports Section // // // // // // // //
 
+
+// Routes
+const admins = require("./routes/api/admins");
+const participants = require("./routes/api/participants");
+const rooms = require("./routes/api/rooms");
+
+// Authentication modules
+app.use(
+    "/api/admins/current",
+    passport.authenticate("jwt", { session: false }),
+    admins.current
+);
+app.use("/api/admins/register", admins.register);
+app.use("/api/admins/login", admins.login);
+
 app.listen(port, () => console.log(`Server is running on port ${port}`));
+
+if (process.env.NODE_ENV === "production") {
+    app.use(express.static("frontend/build"));
+    app.get("/", (req, res) => {
+        res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
+    });
+}
 

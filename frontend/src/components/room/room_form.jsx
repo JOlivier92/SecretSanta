@@ -31,15 +31,15 @@ class RoomForm extends React.Component{
         <form onSubmit={this.handleSubmit}>
           <div>
             <label>Min:</label>
-            <input type="text" placeholder="min price to spend"></input>
+            <input type="text" onChange={this.handleChange('min')} placeholder="min price to spend"></input>
           </div>
           <div>
             <label>Max:</label>
-            <input type="text" placeholder="max price to spend"></input>
+            <input type="text" onChange={this.handleChange('max')} placeholder="max price to spend"></input>
           </div>
           <div>
             <label>Suggestion:</label>
-            <input type="text" placeholder="Suggestions for presents for your Secret Santa"></input>
+            <input type="text" onChange={this.handleChange('suggestions')} placeholder="Suggestions of presents for your Secret Santa"></input>
           </div>
         
           <input type="submit" className="submit-button">Create</input>

@@ -7,13 +7,13 @@ const keys = require('../../config/keys');
 
 let errors = {};
 
-exports.current = function(req,res) {
+exports.current = function(req, res) {
     res.json({
-        id: admin.id,
-        email: admin.email,
-        room_ids: admin.room_ids,
+        id: req.user.id,
+        email: req.user.email,
+        room_ids: req.user.room_ids,
     });
-}
+};
 
 exports.register = function(req,res){
 
@@ -27,7 +27,8 @@ exports.register = function(req,res){
             const newAdmin = new Admin({
                 email: req.body.email,
                 room_ids: req.body.room_ids,
-            })
+                password: req.body.password
+            });
             // generate salt with 10 iterations, pass errors / generated salt to CB
             bcrypt.genSalt(10, (err, salt) => {
                 // attach salt to given password, pass errors / new hash to CB
@@ -53,7 +54,7 @@ exports.register = function(req,res){
                 })
             })
         }
-    });    
+    });
 }
 
 exports.login = function(req,res) {
@@ -84,5 +85,5 @@ exports.login = function(req,res) {
                 return status(400).json(errors)
             }
         })
-    })    
+    })
 }

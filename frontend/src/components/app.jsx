@@ -9,7 +9,7 @@ class App extends React.Component {
     return (
       <div id="App">
         <Switch>
-          <Route exact path="/SecretRoom" component={RoomFormComponent}/>
+          <Route exact path="/SecretRoom" component={RoomFormContainer}/>
           <Route path="/rooms/" component={RoomShowContainer} />
           <Route path="/" component={ Homepage } />
         </Switch>

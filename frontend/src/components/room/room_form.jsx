@@ -4,9 +4,9 @@ class RoomForm extends React.Component{
   constructor(props){
     super(props)
     this.state = {
-      min = "",
-      max = "",
-      suggestions = ""
+      min: "",
+      max: "",
+      suggestions: ""
     }
     this.handleSubmit = this.handleSubmit.bind(this)
     this.handleChange = this.handleChange.bind(this)
@@ -14,7 +14,7 @@ class RoomForm extends React.Component{
 
   handleSubmit(e){
     e.preventDefault()
-    roomData = Object.assign({}, {rooms: this.state})
+    let roomData = Object.assign({}, {rooms: this.state});
     this.props.sendForm(roomData).then( (resdata) => (this.props.history.push(`/rooms/${resdata.id}`)))
   }
 

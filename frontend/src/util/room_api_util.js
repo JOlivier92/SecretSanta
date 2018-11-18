@@ -1,5 +1,4 @@
 import axios from "axios";
-
 export const ADD_NEW_ROOM = "ADD_NEW_ROOM";
 export const GET_ERRORS = "GET_ERRORS";
 

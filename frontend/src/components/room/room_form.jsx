@@ -4,6 +4,7 @@ class RoomForm extends React.Component{
   constructor(props){
     super(props)
     this.state = {
+      title: "",
       min: "",
       max: "",
       suggestions: ""
@@ -15,6 +16,7 @@ class RoomForm extends React.Component{
   handleSubmit(e){
     e.preventDefault()
     let roomData = Object.assign({}, {rooms: this.state});
+    debugger;
     this.props.sendForm(roomData).then( (resdata) => (this.props.history.push(`/rooms/${resdata.id}`)))
   }
 
@@ -26,26 +28,28 @@ class RoomForm extends React.Component{
   }
   render(){
     debugger
-    return(
-      <div>
+    return <div>
         <form onSubmit={this.handleSubmit}>
           <div>
+            <label>Title</label>
+            <input type="text" onChange={this.handleChange("title")} placeholder="Name your group!"></input>
+          </div>
+          <div>
             <label>Min:</label>
-            <input type="text" onChange={this.handleChange('min')} placeholder="min price to spend"></input>
+            <input type="text" onChange={this.handleChange("min")} placeholder="Suggested Minimum Price" />
           </div>
           <div>
             <label>Max:</label>
-            <input type="text" onChange={this.handleChange('max')} placeholder="max price to spend"></input>
+          <input type="text" onChange={this.handleChange("max")} placeholder="Suggested Maximum Price" />
           </div>
           <div>
             <label>Suggestion:</label>
-            <input type="text" onChange={this.handleChange('suggestions')} placeholder="Suggestions of presents for your Secret Santa"></input>
+            <input type="text" onChange={this.handleChange("suggestions")} placeholder="Suggestions of presents for your Secret Santa" />
           </div>
-        
-          <input type="submit" className="submit-button">Create</input>
+          <label>Create</label>
+          <input type="submit" className="submit-button" />
         </form>
-      </div>
-    )
+      </div>;
   }
 }
 

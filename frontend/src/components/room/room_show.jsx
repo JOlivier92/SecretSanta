@@ -3,13 +3,18 @@ class RoomShow extends React.Component {
     constructor(props){
         super(props)
         this.state = {
-            participants: ''
+            participants: []
         }
+    }
+
+    componentDidMount () {
+        this.setState({
+            participants: this.props.getCurrentParticipants
+        });
     }
 
     
     render(){
-        debugger
         return(
           <div>
               NOPE

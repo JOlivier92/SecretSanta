@@ -25,7 +25,20 @@
     transform: rotate(360deg); } }
 
 .homepage {
-  background: green; }
+  background: green;
+  height: 100vh;
+  width: 100vw; }
+  .homepage .header {
+    margin-top: 0;
+    text-align: center; }
+  .homepage .login-form-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center; }
+  .homepage .signup-form-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center; }
 
 body {
   margin: 0;

@@ -6,7 +6,7 @@ import SplashPage from './splash';
 
 const Homepage = () => (
   <div className="homepage">
-    <h1>
+    <h1 className="header">
       Spread the holiday cheer!
     </h1>
     <Switch>

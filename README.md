@@ -29,3 +29,4 @@ This app is implemented in the MERN stack.
 * [Manny Rato](https://github.com/joseph-rato)
 * [Jingna Li](https://github.com/jli57)
 * [Jeremiah Kellick](https://github.com/jeremiahkellick)
+* [Domonic Adams](https://github.com/domobritton)

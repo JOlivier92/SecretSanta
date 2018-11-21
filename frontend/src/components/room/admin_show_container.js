@@ -1,4 +1,4 @@
-import SecretRoom from './secret_room'
+import AdminShow from './admin_show'
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom'
 
@@ -10,4 +10,4 @@ const mapDispatchToProps = (dispatch) => {
 
 };
 
-export default withRouter(connect(null, null)(SecretRoom))
+export default withRouter(connect(null, null)(AdminShow));

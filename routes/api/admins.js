@@ -18,7 +18,6 @@ exports.current = function(req, res) {
 exports.register = function(req,res){
     debugger;
     Admin.findOne({email: req.body.email}).then(admin => {
-        debugger;
         // if the admin already exists in the database, return 400 level error
         if (admin) {
             errors.name = 'admin already exists';
@@ -30,10 +29,13 @@ exports.register = function(req,res){
                 room_ids: req.body.room_ids,
                 password: req.body.password
             });
+            debugger;
             // generate salt with 10 iterations, pass errors / generated salt to CB
             bcrypt.genSalt(10, (err, salt) => {
+                debugger;
                 // attach salt to given password, pass errors / new hash to CB
                 bcrypt.hash(newAdmin.password, salt, (err, hash) => {
+                    debugger;
                     if(err) throw err;
                     // if no errors, save the admin to the database with generated hash
                     newAdmin.password = hash;

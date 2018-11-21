@@ -1,7 +1,8 @@
-import React from "react";
+import React, { Component } from "react";
 import { withRouter, Link } from "react-router-dom";
+import styled from 'styled-components';
 
-class LoginForm extends React.Component {
+class LoginForm extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -25,8 +26,8 @@ class LoginForm extends React.Component {
     }
 
     render() {
-        return <div className="login-form-container">
-            <Link to="/signup">Signup Instead</Link>
+        return <LoginWrapper>
+            <SignupLink to="/signup">Signup Instead</SignupLink>
             <form onSubmit={this.handleSubmit} className="login-form-box">
                 <div className="close">
                 </div>
@@ -36,26 +37,58 @@ class LoginForm extends React.Component {
                     <label>
                         Email:
               <br />
-                        <input type="text" value={this.state.email} onChange={this.update("email")} className="login-input" />
+                        <Input type="text" value={this.state.email} onChange={this.update("email")} className="login-input" />
                     </label>
                     <br />
                     <br />
                     <label>
                         Password:
               <br />
-                        <input type="password" value={this.state.password} onChange={this.update("password")} className="login-input" />
+                        <Input type="password" value={this.state.password} onChange={this.update("password")} className="login-input" />
                     </label>
 
                     <br />
 
-                    <button className="session-submit">
-                        <input id="session-submit" type="submit" value={this.props.formType} />
-                    </button>
+                    <Button>
+                        <Input id="session-submit" type="submit" value={this.props.formType} />
+                    </Button>
                     <br />
                 </div>
             </form>
-        </div>;
+        </LoginWrapper>;
     }
 }
 
 export default withRouter(LoginForm);
+
+
+const LoginWrapper = styled.div`
+  background: rgba(255, 255, 255, 0.2);
+  width: 300px;
+  height: 400px;
+  border-radius: 15px;
+  text-align: center;
+  padding: 0.5rem;
+`;
+
+const SignupLink = styled(Link)`
+    text-decoration: none;
+    color: #ffffff;
+    font-size: 20px;
+`;
+
+const Input = styled.input`
+  width: 85%;
+  height: 30px;
+  font-size: 22px;
+  color: gray;
+  padding: 0 10px;
+`;
+
+const Button = styled.button`
+    background: #CC231E;
+    padding: 5px;
+    border-radius: 5px;
+    margin-top: 20px;
+    width: 120px;
+`;

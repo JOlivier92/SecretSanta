@@ -2,8 +2,8 @@ import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 import Homepage from './homepage';
 import RoomShowContainer from './room/room_show_container';
-import RoomFormContainer from './room/room_form_container';
-import { ProtectedRoute, AuthRoute } from "../util/route_util";
+import SecretRoom from './room/secret_room';
+import { ProtectedRoute } from "../util/route_util";
 
 
 class App extends React.Component {
@@ -11,8 +11,8 @@ class App extends React.Component {
     return (
       <div id="App">
         <Switch>
-          <Route exact path="/SecretRoom" component={RoomFormContainer}/>
-          <Route path="/rooms/" component={RoomShowContainer} />
+          <ProtectedRoute exact path="/secretroom" component={SecretRoom}/>
+          <Route path="/room/:roomid" component={RoomShowContainer} />
           <Route path="/" component={ Homepage } />
         </Switch>
       </div>

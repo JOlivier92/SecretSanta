@@ -1,24 +1,33 @@
 import React from "react";
 import styled from "styled-components";
+import { connect } from "react-redux"; 
+import { requestRooms, requestCurrentRoom } from "../../util/admin_api_util";
 
 class AdminShow extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      participants: []
+      rooms: [],
+      currentRoomParticipants: [],
     };
   }
 
-  componentDidMount() {
+ componentDidMount() {
+    debugger;
+    let currentRooms = this.props.getRooms(this.props.currentUser.id);
+
+    debugger;
     this.setState({
-      participants: this.props.getCurrentParticipants
+      rooms: currentRooms
     });
   }
 
   render() {
+    debugger;
     return <Home>
         <Header>header</Header>
           <SideBar>
+            <div>hi</div>
             Lorem ipsum dolor amet air plant gastropub intelligentsia, food
             truck franzen occupy PBR&B. Put a bird on it fanny pack iPhone
             four dollar toast edison bulb. Four dollar toast kale chips
@@ -59,11 +68,26 @@ class AdminShow extends React.Component {
             retro.
           </Content>
         <Footer>© 2018 Secret Santa</Footer>
-      </Home>;
+      </Home>
   }
 }
 
-export default AdminShow;
+
+
+const mapStateToProps = ({ session }) => {
+  return {
+    currentUser: session
+  }
+}
+
+const mapDispatchToProps = dispatch => {
+  return {
+    getRooms: adminId => dispatch(requestRooms(adminId)),
+    getCurrentRoom: roomId => dispatch(requestCurrentRoom(roomId))
+  }
+}
+
+export default connect(mapStateToProps,mapDispatchToProps)(AdminShow);
 
 const Home = styled.div`
   display: grid;

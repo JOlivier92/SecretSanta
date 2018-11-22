@@ -1,7 +1,6 @@
 const Admin = require('../../models/Admin');
 const bcrypt = require('bcryptjs');
 const jsonwebtoken = require('jsonwebtoken');
-const passport = require('passport');
 const keys = require('../../config/keys');
 
 
@@ -89,4 +88,16 @@ exports.login = function(req,res) {
             }
         })
     })
+}
+
+exports.getRooms = function(req,res) {
+    debugger;
+    Admin.findOne({_id: req.baseUrl.slice(12)})
+        .then(admin => {
+            debugger;
+        })
+    Room.find({adminId: req.baseUrl.slice(12)})
+        .then(rooms => {
+            debugger;
+        })
 }

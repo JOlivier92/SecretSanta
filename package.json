@@ -28,6 +28,8 @@
     "nodemailer": "^4.6.8",
     "passport": "^0.4.0",
     "passport-jwt": "^4.0.0",
+    "react": "^16.6.3",
+    "react-dom": "^16.6.3",
     "styled-components": "^4.1.1",
     "validator": "^10.9.0"
   },

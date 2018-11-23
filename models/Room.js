@@ -8,6 +8,12 @@ const RoomSchema = new Schema({
         required: true
     },
 
+    // admin who owns the current room
+    adminId: {
+        type: String,
+        required: true
+    },
+
     // minimum value of gift
     priceRange: {
         type: String,
@@ -17,7 +23,7 @@ const RoomSchema = new Schema({
     // list of everyone inside of the room
     participants: {
         type: Array,
-        default: []
+        "default": []
     }
 });
 

@@ -34,7 +34,6 @@ export default withRouter(
   connect(mapStateToProps, mapDispatchToProps)(Splashpage)
 );
 
-
 const Splash = styled.div`
   display: flex;
   flex-direction: column;
@@ -47,6 +46,3 @@ const StyledLink = styled(Link)`
   color: #fff;
   font-size: 22px;
 `;
-
-
-

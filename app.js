@@ -40,6 +40,7 @@ app.use(
 app.use("/api/admins/register", admins.register);
 app.use("/api/admins/login", admins.login);
 app.use("/api/rooms", rooms);
+app.use("/api/admins/:id", admins.getRooms)
 
 app.listen(port, () => console.log(`Server is running on port ${port}`));
 

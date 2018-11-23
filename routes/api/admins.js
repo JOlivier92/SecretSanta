@@ -101,3 +101,6 @@ exports.getRooms = function(req,res) {
             });
         });
 }
+
+exports.getCurrentRoom = function(req,res) {
+}

@@ -28,60 +28,62 @@ class AdminShow extends React.Component {
 
   render() {
     debugger;
-    let main_content ;
+    let sidebar_content ;
+    if (this.state.rooms) {
+      sidebar_content = <div>Hi, I'm the rooms</div>
+    } else {
+      sidebar_content = <div className="empty-sidebar">
+        it's a little empty here, why don't you create a secret-santa game?
+        <button onClick={() => this.props.history.push("/home/create/")}>Create a Game</button>
+      </div>
+    }
     return <Home>
-        <Header> <button onClick={this.props.logoutAdmin}> Logout
-        </button>
-    
+        <Header>
+          {" "}
+          <button onClick={this.props.logoutAdmin}> Logout</button>
+          <button onClick={() => this.props.history.push("/home/")}>
+            Back Home
+          </button>
         </Header>
-          <SideBar>
-            <div>hi</div>
-            Lorem ipsum dolor amet air plant gastropub intelligentsia, food
-            truck franzen occupy PBR&B. Put a bird on it fanny pack iPhone
-            four dollar toast edison bulb. Four dollar toast kale chips
-            cardigan selvage man bun lyft church-key drinking vinegar roof
-            party vice. Lumbersexual air plant snackwave stumptown shabby
-            chic man bun brooklyn master cleanse narwhal. Wayfarers jean
-            shorts pork belly photo booth meh VHS polaroid mixtape godard
-            fingerstache four dollar toast 8-bit 90's kickstarter.
-            Post-ironic next level photo booth raclette.
-          </SideBar>
-          <Content>
-            <Switch>
-              <ProtectedRoute exact path="/home/create" component={RoomForm}/>
-              <ProtectedRoute exact path="/home/:roomid" />
-              <div>
-                Chambray narwhal taiyaki beard. Meggings butcher intelligentsia,
-                mlkshk iceland poke locavore retro neutra selvage letterpress VHS
-                bushwick squid kitsch.Cardigan vape lumbersexual tbh ennui fam chia
-                hell of put a bird on it mumblecore.Disrupt gochujang neutra,
-                intelligentsia swag listicle cliche four loko master cleanse copper
-                mug taiyaki.Edison bulb snackwave woke, franzen before they sold out
-                pour - over art party migas health goth butcher 3 wolf moon
-                chicharrones.Tacos gochujang banh mi williamsburg glossier.Drinking
-                vinegar tacos enamel pin blue bottle sartorial, asymmetrical ennui
-                post - ironic.Franzen adaptogen 90's, la croix you probably haven't
-                heard of them woke art party waistcoat kickstarter hella listicle
-                authentic tousled.Banjo bitters pitchfork fanny pack
-                poutine.Succulents vegan slow - carb, unicorn vape wayfarers vice
-                neutra drinking vinegar try-hard cray iPhone pour - over
-                taxidermy.Venmo lo - fi pork belly VHS palo santo gochujang.Pug vape
-                mustache austin tousled vexillologist copper mug taiyaki hot chicken
-                blue bottle banjo humblebrag.Taiyaki ramps live - edge brunch
-                ethical crucifix.Live - edge meggings dreamcatcher kitsch.Tote bag
-                godard small batch etsy woke you probably haven't heard of them
-                hoodie salvia hot chicken locavore raclette ethical af
-                gastropub.Cardigan tbh cornhole disrupt pour - over literally,
-                sriracha yr af cray small batch seitan.Artisan ethical bicycle
-                rights offal small batch master cleanse brunch retro next level
-                vegan umami four loko.Heirloom farm - to - table activated charcoal
-                DIY butcher air plant direct trade subway tile keffiyeh beard retro.
-              </div>
-            </Switch>
-            {main_content}
-          </Content>
+        <SideBar>{sidebar_content}</SideBar>
+        <Content>
+          <Switch>
+            <ProtectedRoute exact path="/home/create" component={RoomForm} />
+            <ProtectedRoute exact path="/home/:roomid" />
+            <div>
+              Chambray narwhal taiyaki beard. Meggings butcher
+              intelligentsia, mlkshk iceland poke locavore retro neutra
+              selvage letterpress VHS bushwick squid kitsch.Cardigan vape
+              lumbersexual tbh ennui fam chia hell of put a bird on it
+              mumblecore.Disrupt gochujang neutra, intelligentsia swag
+              listicle cliche four loko master cleanse copper mug
+              taiyaki.Edison bulb snackwave woke, franzen before they sold
+              out pour - over art party migas health goth butcher 3 wolf
+              moon chicharrones.Tacos gochujang banh mi williamsburg
+              glossier.Drinking vinegar tacos enamel pin blue bottle
+              sartorial, asymmetrical ennui post - ironic.Franzen adaptogen
+              90's, la croix you probably haven't heard of them woke art
+              party waistcoat kickstarter hella listicle authentic
+              tousled.Banjo bitters pitchfork fanny pack poutine.Succulents
+              vegan slow - carb, unicorn vape wayfarers vice neutra drinking
+              vinegar try-hard cray iPhone pour - over taxidermy.Venmo lo -
+              fi pork belly VHS palo santo gochujang.Pug vape mustache
+              austin tousled vexillologist copper mug taiyaki hot chicken
+              blue bottle banjo humblebrag.Taiyaki ramps live - edge brunch
+              ethical crucifix.Live - edge meggings dreamcatcher kitsch.Tote
+              bag godard small batch etsy woke you probably haven't heard of
+              them hoodie salvia hot chicken locavore raclette ethical af
+              gastropub.Cardigan tbh cornhole disrupt pour - over literally,
+              sriracha yr af cray small batch seitan.Artisan ethical bicycle
+              rights offal small batch master cleanse brunch retro next
+              level vegan umami four loko.Heirloom farm - to - table
+              activated charcoal DIY butcher air plant direct trade subway
+              tile keffiyeh beard retro.
+            </div>
+          </Switch>
+        </Content>
         <Footer>© 2018 Secret Santa</Footer>
-      </Home>
+      </Home>;
   }
 }
 

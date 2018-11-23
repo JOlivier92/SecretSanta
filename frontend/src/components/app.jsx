@@ -11,7 +11,7 @@ class App extends React.Component {
     return (
       <div id="App">
         <Switch>
-          <ProtectedRoute exact path="/home" component={AdminShow}/>
+          <ProtectedRoute path="/home" component={AdminShow}/>
           <Route path="/room/:roomid" component={RoomShowContainer} />
           <Route path="/" component={ Homepage } />
         </Switch>

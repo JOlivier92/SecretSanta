@@ -10,7 +10,7 @@ exports.current = function(req, res) {
     res.json({
         id: req.user.id,
         email: req.user.email,
-        room_ids: req.user.room_ids,
+        name: req.user.name,
     });
 };
 
@@ -25,7 +25,7 @@ exports.register = function(req,res){
         // else, assign newAdmin to posted body data
             const newAdmin = new Admin({
                 email: req.body.email,
-                room_ids: req.body.room_ids,
+                name: req.body.name,
                 password: req.body.password
             });
             debugger;
@@ -44,7 +44,7 @@ exports.register = function(req,res){
                         const payload = {
                             id: admin.id,
                             email: admin.email,
-                            room_ids: admin.room_ids,
+                            name: admin.name,
                         };
                         jsonwebtoken.sign(payload, keys.secretOrKey, { expiresIn: 3600 }, (err, token) => {
                             res.json({
@@ -63,6 +63,7 @@ exports.login = function(req,res) {
 
     const email = req.body.email;
     const password = req.body.password;
+    const name = req.body.name;
     Admin.findOne({email})
     .then(admin => {
         if(!admin) {
@@ -74,7 +75,7 @@ exports.login = function(req,res) {
                 const payload = {
                     id: admin.id,
                     email: admin.email,
-                    room_ids: admin.room_ids
+                    name: admin.name
                 };
                 jsonwebtoken.sign(payload, keys.secretOrKey, {expiresIn: 3600}, (err, token) => {
                     res.json({
@@ -91,13 +92,12 @@ exports.login = function(req,res) {
 }
 
 exports.getRooms = function(req,res) {
-    debugger;
-    Admin.findOne({_id: req.baseUrl.slice(12)})
-        .then(admin => {
-            debugger;
-        })
     Room.find({adminId: req.baseUrl.slice(12)})
         .then(rooms => {
             debugger;
-        })
+            idx = rooms.map(room => room._name);
+            res.json({
+                rooms: idx
+            });
+        });
 }

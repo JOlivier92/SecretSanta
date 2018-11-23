@@ -3,25 +3,25 @@ import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 import { logoutAdmin } from "../util/session_api_util";
-import styled from "styled-components";
-
+import styled from 'styled-components';
 
 const Splashpage = ({ loggedIn, logout }) => {
   if (loggedIn) {
-    return <div className="splash">
-        <Button>
-          <Link to="/" onClick={() => logout()} className="splash-btn">log out</Link>
-        </Button>
-      </div>;
+    return (
+      <Splash>
+        <StyledLink to="/" onClick={() => logout()}>
+          Log Out
+        </StyledLink>
+      </Splash>
+    );
   } else {
-    return <div className="splash">
-        <Button>
-          <Link to="/signup" className="splash-btn">sign up</Link>
-        </Button>
-        <Button>
-          <Link to="/login" className="splash-btn">login</Link>
-        </Button>
-      </div>;
+    return (
+      <Splash>
+        <StyledLink to="/signup">Sign Up</StyledLink>
+        <br />
+        <StyledLink to="/login">Log In</StyledLink>
+      </Splash>
+    );
   }
 };
 
@@ -34,12 +34,15 @@ export default withRouter(
   connect(mapStateToProps, mapDispatchToProps)(Splashpage)
 );
 
+const Splash = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+`;
 
-const Button = styled.button`
-  background: #cc231e;
-  padding: 5px;
-  border-radius: 5px;
-  margin-top: 20px;
-  width: 120px;
-  margin-right: 20px;
+const StyledLink = styled(Link)`
+  text-decoration: none;
+  color: #fff;
+  font-size: 22px;
 `;

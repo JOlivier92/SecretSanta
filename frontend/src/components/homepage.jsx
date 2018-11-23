@@ -58,6 +58,14 @@ const Snow = styled.div``;
 
 const Header = styled.h1`
   font-size: 50px;
+
+  @media all and (max-width: 768px) {
+    font-size: 40px;
+  }
+
+  @media all and (max-width: 640px) {
+    font-size: 28px;
+  }
 `;
 
 const Flakes = styled.div`

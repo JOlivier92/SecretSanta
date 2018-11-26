@@ -12,6 +12,6 @@ export const addNewRoom = payload => {
 
 export const createNewRoom = requirements => dispatch => {
     axios
-        .post("/api/room", requirements)
+        .post("/api/rooms", requirements)
         .then(res => dispatch(addNewRoom(res)));
 }

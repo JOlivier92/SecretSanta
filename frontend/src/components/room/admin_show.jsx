@@ -1,5 +1,5 @@
 import React from "react";
-import { Switch, Route } from 'react-router-dom';
+import { Switch, Route, Link } from 'react-router-dom';
 import styled from "styled-components";
 import { connect } from "react-redux";
 import RoomForm from './room_form_container';
@@ -34,16 +34,22 @@ class AdminShow extends React.Component {
     } else {
       sidebar_content = <div className="empty-sidebar">
         it's a little empty here, why don't you create a secret-santa game?
-        <button onClick={() => this.props.history.push("/home/create/")}>Create a Game</button>
+        <StyledLink to="/home/create">
+          Create a Game
+        </StyledLink>
       </div>
     }
     return <Home>
         <Header>
           {" "}
-          <button onClick={this.props.logoutAdmin}> Logout</button>
-          <button onClick={() => this.props.history.push("/home/")}>
+          <StyledLink to="/" onClick={() => this.props.logoutAdmin()}>
+            Log Out
+          </StyledLink>
+          <StyledLink to="/home/">
             Back Home
-          </button>
+          </StyledLink>
+
+          
         </Header>
         <SideBar>{sidebar_content}</SideBar>
         <Content>
@@ -147,4 +153,11 @@ const SideBar = styled.div`
   border-radius: 15px;
   padding: 0.5rem;
   margin-left: 10px;
+`;
+
+const StyledLink = styled(Link)`
+  text-decoration: none;
+  color: #fff;
+  font-size: 22px;
+  display: block;
 `;

@@ -11,6 +11,7 @@ router.post(
   '/',
   passport.authenticate("jwt", { session: false }),
   (req, res) => {
+    debugger;
     const newRoom = new Room({
       title: req.body.title,
       priceRange: req.body.priceRange

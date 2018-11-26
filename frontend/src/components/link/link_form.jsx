@@ -40,7 +40,7 @@ class LinkForm extends React.Component{
           </div>
           <div>
             <label>Suggestion:</label>
-            <input type="text" onChange={this.handleChange('suggestions')} placeholder="Suggestions of presents for your Secret Santa"></input>
+            <input type="textarea" onChange={this.handleChange('suggestions')} placeholder="Suggestions of presents for your Secret Santa"></input>
           </div>
         
           <input type="submit" className="submit-button">Join Secret Santa Group</input>

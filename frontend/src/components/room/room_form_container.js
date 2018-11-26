@@ -4,6 +4,11 @@ import {withRouter} from 'react-router-dom'
 import {createNewRoom} from '../../util/room_api_util'
 
 
+const mapStateToProps = ({ session }) => {
+  return {
+    currentUser: session
+  };
+};
 
 const mapDispatchToProps = (dispatch) => {
   return {
@@ -11,4 +16,4 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-export default withRouter(connect(null, mapDispatchToProps)(RoomForm))
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(RoomForm))

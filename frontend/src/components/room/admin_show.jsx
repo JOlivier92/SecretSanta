@@ -6,6 +6,8 @@ import RoomForm from './room_form_container';
 import { ProtectedRoute } from "../../util/route_util";
 import { requestRooms, requestCurrentRoom } from "../../util/admin_api_util";
 import { logoutAdmin } from '../../util/session_api_util';
+import SantaHat from '../../images/secret-santa.png';
+import SnowTrees from '../../images/snow-trees.png';
 
 class AdminShow extends React.Component {
   constructor(props) {
@@ -32,21 +34,25 @@ class AdminShow extends React.Component {
     if (this.state.rooms) {
       sidebar_content = <div>Hi, I'm the rooms</div>
     } else {
-      sidebar_content = <div className="empty-sidebar">
-        it's a little empty here, why don't you create a secret-santa game?
-        <StyledLink to="/home/create">
-          Create a Game
-        </StyledLink>
-      </div>
+      sidebar_content = 
+      <>
+          it's a little empty here, why don't you create a secret-santa game?
+          <CenterFlex>
+            <StyledLink to="/home/create">
+              <NewGame>Create a Game</NewGame>
+            </StyledLink>
+          </CenterFlex>
+      </>
     }
     return <Home>
+      <Background />
+      <Snow src={SnowTrees} alt='snow' />
         <Header>
-          {" "}
-          <StyledLink to="/" onClick={() => this.props.logoutAdmin()}>
-            Log Out
-          </StyledLink>
           <StyledLink to="/home/">
-            Back Home
+            <Image src={SantaHat} alt='home' />
+          </StyledLink>
+          <StyledLink to="/" onClick={() => this.props.logoutAdmin()}>
+            <Logout>Log Out</Logout>
           </StyledLink>
 
           
@@ -57,39 +63,12 @@ class AdminShow extends React.Component {
             <ProtectedRoute exact path="/home/create" component={RoomForm} />
             <ProtectedRoute exact path="/home/:roomid" />
             <div>
-              Chambray narwhal taiyaki beard. Meggings butcher
-              intelligentsia, mlkshk iceland poke locavore retro neutra
-              selvage letterpress VHS bushwick squid kitsch.Cardigan vape
-              lumbersexual tbh ennui fam chia hell of put a bird on it
-              mumblecore.Disrupt gochujang neutra, intelligentsia swag
-              listicle cliche four loko master cleanse copper mug
-              taiyaki.Edison bulb snackwave woke, franzen before they sold
-              out pour - over art party migas health goth butcher 3 wolf
-              moon chicharrones.Tacos gochujang banh mi williamsburg
-              glossier.Drinking vinegar tacos enamel pin blue bottle
-              sartorial, asymmetrical ennui post - ironic.Franzen adaptogen
-              90's, la croix you probably haven't heard of them woke art
-              party waistcoat kickstarter hella listicle authentic
-              tousled.Banjo bitters pitchfork fanny pack poutine.Succulents
-              vegan slow - carb, unicorn vape wayfarers vice neutra drinking
-              vinegar try-hard cray iPhone pour - over taxidermy.Venmo lo -
-              fi pork belly VHS palo santo gochujang.Pug vape mustache
-              austin tousled vexillologist copper mug taiyaki hot chicken
-              blue bottle banjo humblebrag.Taiyaki ramps live - edge brunch
-              ethical crucifix.Live - edge meggings dreamcatcher kitsch.Tote
-              bag godard small batch etsy woke you probably haven't heard of
-              them hoodie salvia hot chicken locavore raclette ethical af
-              gastropub.Cardigan tbh cornhole disrupt pour - over literally,
-              sriracha yr af cray small batch seitan.Artisan ethical bicycle
-              rights offal small batch master cleanse brunch retro next
-              level vegan umami four loko.Heirloom farm - to - table
-              activated charcoal DIY butcher air plant direct trade subway
-              tile keffiyeh beard retro.
+              Here goes Secret Santa Mission Statement. What we are about. What we are doing.
             </div>
           </Switch>
         </Content>
         <Footer>© 2018 Secret Santa</Footer>
-      </Home>;
+      </Home>
   }
 }
 
@@ -116,23 +95,26 @@ const Home = styled.div`
   grid-gap: 10px;
   height: 100vh;
   grid-template-columns: 1fr 1fr 1fr;
-  grid-template-rows: 80px 1fr 100px;
+  grid-template-rows: 80px 1fr 40px;
   grid-template-areas: "header  header  header" "sidebar content content"
     "footer  footer  footer";
-  background: #159957;
-  background: -webkit-linear-gradient(to right, #155799, #159957);
-  background: linear-gradient(to right, #155799, #159957);
-
   color: #fef9f9;
 `;
 
 const Header = styled.div`
   grid-area: header;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 25px;
+  align-items: center;
   background: #235e6f;
 `;
 
 const Footer = styled.div`
   grid-area: footer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   background: #fef9f9;
   color: #333;
   box-shadow: 0 -1px 5px -4px #333;
@@ -160,4 +142,50 @@ const StyledLink = styled(Link)`
   color: #fff;
   font-size: 22px;
   display: block;
+`;
+
+const Image = styled.img`
+  width: 50px;
+`;
+
+const Logout = styled.button`
+  &:hover {
+    color: #159957;
+  }
+`;
+
+const Snow = styled.img`
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 100vw;
+  z-index: -1;
+`;
+
+const Background = styled.div`
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -2;
+  background: #159957;
+  background: -webkit-linear-gradient(to right, #155799, #159957);
+  background: linear-gradient(to right, #155799, #159957);
+`;
+
+const NewGame = styled.button`
+  background: #cc231e;
+  padding: 5px;
+  border-radius: 5px;
+  margin-top: 20px;
+  width: 180px;
+`;
+
+const CenterFlex = styled.div`
+  display: flex;
+  justify-content: center;
 `;

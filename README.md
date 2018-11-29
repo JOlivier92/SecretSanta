@@ -30,3 +30,4 @@ This app is implemented in the MERN stack.
 * [Jingna Li](https://github.com/jli57)
 * [Jeremiah Kellick](https://github.com/jeremiahkellick)
 * [Domonic Adams](https://github.com/domobritton)
+* [Michael Chi](https://github.com/mchi168)
